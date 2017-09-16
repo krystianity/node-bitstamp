@@ -2,9 +2,10 @@
 
 bitstamp REST and WS API Node.js client :dollar:
 
-# Offers
+## Offers
 
 * version 1 and version 2 of the bistamp REST API
+* supports all new api endpoints
 * 100% promise based
 * optional full control of response status and headers
 * all bitstamp currencies available: Bitcoin, Ethereum, Litecoin, Ripple, XRP
@@ -13,7 +14,7 @@ bitstamp REST and WS API Node.js client :dollar:
 * takes care of max. request quotas automatically (prevents bans)
 * install via `npm i node-bitstamp` or `yarn add node-bitstamp`
 
-# Example
+## Example
 
 ```javascript
 "use strict";
@@ -56,7 +57,7 @@ stream.close();
 
 // @ https://www.bitstamp.net/account/login/
 // To get an API key, go to "Account", "Security" and then "API Access". 
-// Set permissions and lick "Generate key"
+// Set permissions and click "Generate key"
 // Dont forget to active the key and confirm the email.
 const key = "abc3def4ghi5jkl6mno7";
 const secret = "abcdefghijklmno";
@@ -65,10 +66,21 @@ const clientId = "123123";
 const bitstamp = new Bitstamp({
     key,
     secret,
-    clientId
+    clientId,
+    timeout: 5000,
+    rateLimit: true //turned on by default
 });
 
 const run = async () => {
+
+    /*
+        Every api function returns a bluebird promise.
+        The promise only rejects on network errors or timeouts.
+        A successfull promise always resolves in an object containing status, headers and body.
+        status is the http status code as number, headers is an object of http response headers
+        and body is the parsed JSON response body of the api, you dont need to parse the results
+        yourself you can simply continue by accessing the object.
+    */
 
     /* PUBLIC */
     const ticker = await bitstamp.ticker(CURRENCY.ETH_BTC).then(({status, headers, body}) => body;
@@ -78,7 +90,7 @@ const run = async () => {
     await bitstamp.conversionRate();
 
     /* PRIVATE */
-    const balance = await bitstamp.balance().then(({body}) => body);
+    const balance = await bitstamp.balance().then(({body:data}) => data);
     await bitstamp.userTransaction(CURRENCY.ETH_BTC, {offset, limit, sort});
 
     await bitstamp.openOrders(CURRENCY.ETH_BTC);
@@ -117,9 +129,16 @@ const run = async () => {
     await bitstamp.liquidationAddressInfo(address);
 };
 
-run().then(() => bitstamp.close());
+run().then(() => {
+    console.log(bitstamp.getStats());
+    bitstamp.close();
+});
 ```
 
-# License
+## Debug Info
+
+`DEBUG=node-bitstamp:* npm start`
+
+## License
 
 MIT
