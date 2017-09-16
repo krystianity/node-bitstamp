@@ -1,0 +1,38 @@
+{
+  "name": "node-bitstamp",
+  "version": "1.0.0",
+  "description": "bitstamp rest and websocket v1 and v2 api client",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krystianity/node-bitstamp.git"
+  },
+  "keywords": [
+    "bitstamp",
+    "btc",
+    "bitcoin",
+    "api",
+    "client",
+    "v1",
+    "v2",
+    "litecoin",
+    "ethereum",
+    "eth",
+    "xrp",
+    "ripple",
+    "withdrawal",
+    "transfer",
+    "order"
+  ],
+  "author": "Christian Froehlingsdorf <chris@5cf.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/krystianity/node-bitstamp/issues"
+  },
+  "homepage": "https://github.com/krystianity/node-bitstamp#readme",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "pusher-js": "^4.1.0",
+    "request": "^2.81.0"
+  }
+}
