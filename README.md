@@ -2,6 +2,15 @@
 
 bitstamp REST and WS API Node.js client :dollar:
 
+## README Overview
+
+* [Offers](#offers)
+* [Donate](#donate)
+* [Example](#example)
+* [Debug Info](#debug-info)
+* [A word on parallel requests](#a-word-on-parallel-requests)
+* [License](#license)
+
 ## Offers
 
 * version 1 and version 2 of the bistamp REST API
@@ -13,6 +22,16 @@ bitstamp REST and WS API Node.js client :dollar:
 * takes care of signature and nonce automatically
 * takes care of max. request quotas automatically (prevents bans)
 * install via `npm i node-bitstamp` or `yarn add node-bitstamp`
+
+## Donate
+
+* If this client helped you, feel free to buy me a :beer:
+* BTC: `3FX5SGcizKVwsezqFRbDVgQ7UhGwx6XArU`
+* ETH: `0x54e0a18386eb7831de38a438cd3fc0162e5d33e6`
+* LTC: `MUJgac5DYntbvjH7zLAjjjm3z9QgPfVLgH`
+* Donations are much appreciated.
+* If you dont want to give away money, starring the project is also a way of saying
+    thank you :)
 
 ## Example
 
@@ -138,6 +157,36 @@ run().then(() => {
 ## Debug Info
 
 `DEBUG=node-bitstamp:* npm start`
+
+## A word on parallel requests
+
+* The client will never generate the same nonce for two requests.
+* But a new request must always contain a higher nonce, than the last request before.
+* When you make multiple calls in parallel (pretty easy in node..) there is a chance
+    that the later calls reach the bitstamp api earlier than the first, causing the first
+    requests to fail with an `invalid nonce` error.
+* To prevent this you should make these calls sequentially.
+* Besides chaining promises, this is another way to do it:
+
+```javascript
+const async = require("async"); // npm i async or yarn add async
+
+async.series([
+    cb => bitstamp.bitcoinDepositAdress()
+        .then(r => cb(null, "BTC: " + r.body)).catch(e => cb(e)),
+    cb => bitstamp.ethereumDepositAdress()
+        .then(r => cb(null, "ETH: " + r.body.address)).catch(e => cb(e)),
+    cb => bitstamp.litecoinDepositAdress()
+        .then(r => cb(null, "LTC: " + r.body.address)).catch(e => cb(e))
+], (error, data) => {
+
+    if(error){
+        return console.error(error);
+    }
+
+    console.log(data); // [ "BTC: ..", "ETH: ..", "LTC: .." ]
+});
+```
 
 ## License
 

@@ -1,6 +1,6 @@
 {
   "name": "node-bitstamp",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "bitstamp rest and websocket v1 and v2 api client",
   "main": "index.js",
   "repository": {
