@@ -38,18 +38,19 @@ bitstamp REST and WS API Node.js client :dollar:
 ```javascript
 "use strict";
 
-const {TickerStream, Bitstamp, CURRENCY} = require("node-bitstamp");
+const {TickerStream, OrderBookStream, Bitstamp, CURRENCY} = require("node-bitstamp");
 
 //printing available currencies
 console.log(CURRENCY);
 
-/* STREAM */
+/* STREAMS */
 // @ https://www.bitstamp.net/websocket/
 
-const stream = new TickerStream();
-const topic = stream.subscribe(CURRENCY.ETH_EUR);
+// Live trades
+const tickerStream = new TickerStream();
+const tickerTopic = tickerStream.subscribe(CURRENCY.ETH_EUR);
 
-stream.on(topic, data => {
+tickerStream.on(tickerTopic, data => {
     console.log(data);
     /* e.g.
         { 
@@ -67,8 +68,31 @@ stream.on(topic, data => {
     */
 });
 
-stream.close();
+tickerStream.close();
 
+// Live orderBook updates
+const orderBookStream = new OrderBookStream();
+const orderBookTopic = orderBookStream.subscribe(CURRENCY.BTC_EUR);
+
+orderBookStream.on(topic, data => {
+    console.log(data);
+    /* e.g.
+        { bids:
+        [ 
+            [ '3284.06000000', '0.16927410' ],
+            [ '3284.05000000', '1.00000000' ],
+            [ '3284.02000000', '0.72755647' ],
+            .....
+        ],
+        asks:
+        [ 
+            [ '3289.00000000', '3.16123001' ],
+            [ '3291.99000000', '0.22000000' ],
+            [ '3292.00000000', '49.94312963' ],
+            .....
+        ] }
+    */
+});
 
 
 /* REST-API */
