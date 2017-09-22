@@ -94,6 +94,8 @@ orderBookStream.on(topic, data => {
     */
 });
 
+orderBookStream.close();
+
 
 /* REST-API */
 // @ https://www.bitstamp.net/api/
