@@ -50,6 +50,15 @@ console.log(CURRENCY);
 const tickerStream = new TickerStream();
 const tickerTopic = tickerStream.subscribe(CURRENCY.ETH_EUR);
 
+tickerStream.on("connected", () => {});
+tickerStream.on("disconnected", () => {});
+
+/*
+    sadly pusher-js does not really expose errors in an acceptable manner
+    therefore you will have to trust its automatic re-connect handling
+    in case of disconnections and network errors
+*/
+
 tickerStream.on(tickerTopic, data => {
     console.log(data);
     /* e.g.
@@ -73,6 +82,15 @@ tickerStream.close();
 // Live orderBook updates
 const orderBookStream = new OrderBookStream();
 const orderBookTopic = orderBookStream.subscribe(CURRENCY.BTC_EUR);
+
+orderBookStream.on("connected", () => {});
+orderBookStream.on("disconnected", () => {});
+
+/*
+    sadly pusher-js does not really expose errors in an acceptable manner
+    therefore you will have to trust its automatic re-connect handling
+    in case of disconnections and network errors
+*/
 
 orderBookStream.on(topic, data => {
     console.log(data);
