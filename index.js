@@ -7,6 +7,7 @@ const Bitstamp = require("./lib/Bitstamp.js");
 const CURRENCY = require("./lib/currency.js");
 
 module.exports = {
+    default: Bitstamp,
     TickerStream,
     OrderBookStream,
     Bitstamp,
