@@ -35,6 +35,9 @@ bitstamp REST and WS API Node.js client :dollar:
 
 ## Example
 
+* you can find a runnable api example [here](example/api.js), run via `yarn example:api`
+* you can find a runnable stream example [here](example/stream.js), run via `yarn example:stream`
+
 ```javascript
 "use strict";
 
@@ -49,6 +52,12 @@ console.log(CURRENCY);
 // Live trades
 const tickerStream = new TickerStream();
 const tickerTopic = tickerStream.subscribe(CURRENCY.ETH_EUR);
+
+/*
+    as tickers are re-usable (subscribe to multiple currencies)
+    every subscribe actions returns a topic name, which is the actual event you
+    can listen to after subscription
+*/
 
 tickerStream.on("connected", () => {});
 tickerStream.on("disconnected", () => {});
@@ -92,7 +101,7 @@ orderBookStream.on("disconnected", () => {});
     in case of disconnections and network errors
 */
 
-orderBookStream.on(topic, data => {
+orderBookStream.on(orderBookTopic, data => {
     console.log(data);
     /* e.g.
         { bids:
@@ -146,7 +155,7 @@ const run = async () => {
     */
 
     /* PUBLIC */
-    const ticker = await bitstamp.ticker(CURRENCY.ETH_BTC).then(({status, headers, body}) => body;
+    const ticker = await bitstamp.ticker(CURRENCY.ETH_BTC).then(({status, headers, body}) => console.log(body));
     await bitstamp.tickerHour(CURRENCY.ETH_BTC);
     await bitstamp.orderBook(CURRENCY.ETH_BTC);
     await bitstamp.transactions(CURRENCY.ETH_BTC, "hour");
