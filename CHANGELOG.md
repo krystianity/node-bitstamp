@@ -1,5 +1,9 @@
 # NODE-BITSTAMP CHANGELOG
 
+## 1.16.1
+
+* fixed bug in bitcoinWithdrawal, instant is now an integer with default value 0
+
 ## 1.16.0
 
 * added runnable examples
