@@ -61,12 +61,14 @@ const run = async () => {
 
         await bitstamp.withDrawalRequests(timedelta);
         await bitstamp.bitcoinWithdrawal(amount, address, instant);
+        await bitstamp.bchWithdrawal(amount, address);
         await bitstamp.litecoinWithdrawal(amount, address);
         await bitstamp.ethereumWithdrawal(amount, address);
         await bitstamp.rippleWithdrawal(amount, address, currency);
         await bitstamp.xrpWithdrawal(amount, address, destination_tag);
 
         await bitstamp.bitcoinDepositAdress().then(({body}) => console.log(body));
+        await bitstamp.bchDepositAdress().then(({body}) => console.log(body));
         await bitstamp.litecoinDepositAdress().then(({body}) => console.log(body));
         await bitstamp.ethereumDepositAdress().then(({body}) => console.log(body));
         await bitstamp.rippleDepositAdress().then(({body}) => console.log(body));
