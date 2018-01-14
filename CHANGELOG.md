@@ -1,5 +1,10 @@
 # NODE-BITSTAMP CHANGELOG
 
+## 1.7.0
+
+* added BCH functions via PR
+* fixed ep via PR
+
 ## 1.16.1
 
 * fixed bug in bitcoinWithdrawal, instant is now an integer with default value 0
