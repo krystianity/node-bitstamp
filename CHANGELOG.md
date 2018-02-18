@@ -1,5 +1,10 @@
 # NODE-BITSTAMP CHANGELOG
 
+## 2.0.0
+
+* small fixes
+* **BREAKING** requests will now reject on bad status codes and api errors
+
 ## 1.7.0
 
 * added BCH functions via PR
