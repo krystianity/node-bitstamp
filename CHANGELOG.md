@@ -1,5 +1,10 @@
 # NODE-BITSTAMP CHANGELOG
 
+## 2.1.0
+
+* adding state of body by non 200 status codes into error message
+* merged PR for liveorderstream
+
 ## 2.0.0
 
 * small fixes
