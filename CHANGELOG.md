@@ -1,5 +1,11 @@
 # NODE-BITSTAMP CHANGELOG
 
+# 2.2.0
+
+* updated dependencies
+* typesript declarations
+* fixed bug that encapsules api errors
+
 ## 2.1.0
 
 * adding state of body by non 200 status codes into error message

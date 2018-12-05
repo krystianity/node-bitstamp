@@ -1,8 +1,9 @@
 {
   "name": "node-bitstamp",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "bitstamp rest and websocket v1 and v2 api client",
   "main": "index.js",
+  "typings": "index.d.ts",
   "scripts": {
     "example:api": "node ./example/api.js",
     "example:stream": "node ./example/stream.js"
@@ -39,9 +40,9 @@
   },
   "homepage": "https://github.com/krystianity/node-bitstamp#readme",
   "dependencies": {
-    "bluebird": "~3.5.1",
-    "debug": "~3.1.0",
-    "pusher-js": "~4.2.1",
-    "request": "~2.83.0"
+    "bluebird": "~3.5.3",
+    "debug": "~4.1.0",
+    "pusher-js": "~4.3.1",
+    "request": "~2.88.0"
   }
 }
