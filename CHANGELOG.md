@@ -1,5 +1,9 @@
 # NODE-BITSTAMP CHANGELOG
 
+# 2.3.0
+
+* added btcusd
+
 # 2.2.0
 
 * updated dependencies
