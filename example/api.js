@@ -9,7 +9,7 @@ console.log(CURRENCY);
 // @ https://www.bitstamp.net/api/
 
 // @ https://www.bitstamp.net/account/login/
-// To get an API key, go to "Account", "Security" and then "API Access". 
+// To get an API key, go to "Account", "Security" and then "API Access".
 // Set permissions and click "Generate key"
 // Dont forget to active the key and confirm the email.
 const key = "abc3def4ghi5jkl6mno7";
@@ -29,18 +29,18 @@ const run = async () => {
     /*
         Every api function returns a bluebird promise.
         The promise only rejects on network errors or timeouts.
-        A successfull promise always resolves in an object containing status, headers and body.
+        A successful promise always resolves in an object containing status, headers and body.
         status is the http status code as number, headers is an object of http response headers
         and body is the parsed JSON response body of the api, you dont need to parse the results
         yourself you can simply continue by accessing the object.
     */
 
     /* PUBLIC */
-    const ticker = await bitstamp.ticker(CURRENCY.ETH_BTC).then(({status, headers, body}) => console.log(body));
-    await bitstamp.tickerHour(CURRENCY.ETH_BTC);
-    await bitstamp.orderBook(CURRENCY.ETH_BTC);
-    await bitstamp.transactions(CURRENCY.ETH_BTC, "hour");
-    await bitstamp.conversionRate();
+    await bitstamp.ticker(CURRENCY.ETH_BTC).then(({status, headers, body}) => console.log(body));
+    await bitstamp.tickerHour(CURRENCY.ETH_BTC).then(({status, headers, body}) => console.log(body));
+    await bitstamp.orderBook(CURRENCY.ETH_BTC).then(({status, headers, body}) => console.log(body));
+    await bitstamp.transactions(CURRENCY.ETH_BTC, "hour").then(({status, headers, body}) => console.log(body));
+    await bitstamp.conversionRate().then(({status, headers, body}) => console.log(body));
 
     /* PRIVATE */
     const balance = await bitstamp.balance().then(({body:data}) => data);
