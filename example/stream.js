@@ -16,7 +16,7 @@ bitstampStream.on("connected", () => {
         every subscribe actions returns a channel name, which is the actual event you
         can listen to after subscription
     */
-    const ethEurTickerChannel = bitstampStream.subscribe(CURRENCY.ETH_EUR);
+    const ethEurTickerChannel = bitstampStream.subscribe(bitstampStream.CHANNEL_LIVE_TRADES, CURRENCY.ETH_EUR);
     bitstampStream.on(ethEurTickerChannel, ({ data, event }) => {
         console.log(data);
         /* e.g.
@@ -39,7 +39,7 @@ bitstampStream.on("disconnected", () => {});
 
 // Live orderBook updates
 bitstampStream.on("connected", () => {
-    const btcEurOrderBookChannel = bitstampStream.subscribe(CURRENCY.BTC_EUR);
+    const btcEurOrderBookChannel = bitstampStream.subscribe(bitstampStream.CHANNEL_ORDER_BOOK, CURRENCY.BTC_EUR);
 
     bitstampStream.on(btcEurOrderBookChannel, ({ data, event }) => {
         console.log(data);
@@ -62,7 +62,9 @@ bitstampStream.on("connected", () => {
     });
 });
 
+bitstampStream.on("error", (e) => console.error(e));
+
 setTimeout(() => {
     console.log("closing after 10 seconds.");
     bitstampStream.close();
-}, 1000);
+}, 10000);
