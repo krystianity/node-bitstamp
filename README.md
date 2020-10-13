@@ -5,7 +5,6 @@ bitstamp REST and WS API Node.js client :dollar:
 ## README Overview
 
 * [Offers](#offers)
-* [Donate](#donate)
 * [Example](#example)
 * [Debug Info](#debug-info)
 * [A word on parallel requests](#a-word-on-parallel-requests)
@@ -23,16 +22,6 @@ bitstamp REST and WS API Node.js client :dollar:
 * takes care of signature and nonce automatically
 * takes care of max. request quotas automatically (prevents bans)
 * install via `npm i node-bitstamp` or `yarn add node-bitstamp`
-
-## Donate
-
-* If this client helped you, feel free to buy me a :beer:
-* BTC: `3FX5SGcizKVwsezqFRbDVgQ7UhGwx6XArU`
-* ETH: `0x54e0a18386eb7831de38a438cd3fc0162e5d33e6`
-* LTC: `MUJgac5DYntbvjH7zLAjjjm3z9QgPfVLgH`
-* Donations are much appreciated.
-* If you dont want to give away money, starring the project is also a way of saying
-    thank you :)
 
 ## Example
 
