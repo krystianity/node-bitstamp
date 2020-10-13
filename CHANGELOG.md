@@ -1,5 +1,11 @@
 # NODE-BITSTAMP CHANGELOG
 
+# 3.0.0
+
+* support for new websockets
+* new currencies supported
+* bugfixes
+
 # 2.3.0
 
 * added btcusd
