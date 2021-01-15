@@ -69,6 +69,8 @@ declare module 'node-bitstamp' {
     ): Promise<BitstampNodeRespose> //  | IBitstampLimitOrderInvalid>
 
     transactions(currency?: CURRENCY, time?: string): Promise<any>
+
+    cryptoTransactions(currency?: CURRENCY, time?: string): Promise<any>
   }
   export enum CURRENCY {
     BTC_EUR,
