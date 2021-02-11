@@ -40,7 +40,7 @@ declare module 'node-bitstamp' {
   }
 
   export interface IBitstampOrder {
-    id: number|bigint
+    id: number
     datetime: Date
     type: BitstampTradeType
     price: number
@@ -48,7 +48,7 @@ declare module 'node-bitstamp' {
   }
 
   export interface IBitstampCancelledOrder {
-    id: number|bigint
+    id: number
     datetime: Date
     price: number
     amount: number
@@ -59,14 +59,14 @@ declare module 'node-bitstamp' {
     price: string
     datetime: Date
     btc: string
-    tid: number|bigint
+    tid: number
     type: BitstampTradeType
     eur: string
   }
 
   export interface IBitstampOrderStatus {
     status: BitstampOrderStatus
-    id: number|bigint
+    id: number
     amount_remaining: string
     transactions: Array<IBitstampTransaction>
   }
@@ -84,7 +84,7 @@ declare module 'node-bitstamp' {
   }
 
   export interface IBitstampWithdrawal {
-    id: number|bigint
+    id: number
     datetime: Date
     type: BitstampWithdrawalType
     currency: CURRENCY
@@ -132,7 +132,7 @@ declare module 'node-bitstamp' {
   }
 
   export interface IBitstampLiquidationTransaction {
-    order_id: number|bigint,
+    order_id: number,
     count: number,
     trades: Array<IBitstampLiquidationTrade>
   }
@@ -159,8 +159,8 @@ declare module 'node-bitstamp' {
 
     openOrders(currency?: CURRENCY): Promise<BitstampNodeResponse<Array<IBitstampOrder>>>
     openOrdersAll(): Promise<BitstampNodeResponse<Array<IBitstampOrder>>>
-    orderStatus(id: number|bigint): Promise<BitstampNodeResponse<IBitstampOrderStatus>>;
-    cancelOrder(id: number|bigint): Promise<BitstampNodeResponse<IBitstampCancelledOrder>>
+    orderStatus(id: number): Promise<BitstampNodeResponse<IBitstampOrderStatus>>;
+    cancelOrder(id: number): Promise<BitstampNodeResponse<IBitstampCancelledOrder>>
     cancelOrdersAll(): Promise<BitstampNodeResponse<boolean>>
 
     // amount is quantity, price is per unit
@@ -187,13 +187,13 @@ declare module 'node-bitstamp' {
 
     withDrawalRequests(timedelta?: number): Promise<BitstampNodeResponse<IBitstampWithdrawal>>
 
-    bitcoinWithdrawal(amount: number, address: string, instant: number): Promise<BitstampNodeResponse<number|bigint>>
-    litecoinWithdrawal(amount: number, address: string): Promise<BitstampNodeResponse<number|bigint>>
-    ethereumWithdrawal(amount: number, address: string): Promise<BitstampNodeResponse<number|bigint>>
+    bitcoinWithdrawal(amount: number, address: string, instant: number): Promise<BitstampNodeResponse<number>>
+    litecoinWithdrawal(amount: number, address: string): Promise<BitstampNodeResponse<number>>
+    ethereumWithdrawal(amount: number, address: string): Promise<BitstampNodeResponse<number>>
     // FIME: Create an enum for ripple currency (as I have no idea what values are expected here...)
     rippleWithdrawal(amount: number, address: string, currency: any): Promise<BitstampNodeResponse<boolean>>
-    xrpWithdrawal(amount: number, address: string, destination_address: number): Promise<BitstampNodeResponse<number|bigint>>
-    bchWithdrawal(amount: number, address: string): Promise<BitstampNodeResponse<number|bigint>>
+    xrpWithdrawal(amount: number, address: string, destination_address: number): Promise<BitstampNodeResponse<number>>
+    bchWithdrawal(amount: number, address: string): Promise<BitstampNodeResponse<number>>
 
     ethereumDepositAdress(): Promise<BitstampNodeResponse<string>>
     xrpDepositAdress(): Promise<BitstampNodeResponse<string>>
@@ -207,9 +207,9 @@ declare module 'node-bitstamp' {
     transferSubToMain(amount: number, currency: string, subAccount?: string): Promise<BitstampNodeResponse<string>>
     transferMainToSub(amount: number, currency: string, subAccount?: string): Promise<BitstampNodeResponse<string>>
 
-    openBankWithdrawal(body: IBitstampBankWithdrawal): Promise<BitstampNodeResponse<number|bigint>>
-    bankWithdrawalStatus(id: number|bigint): Promise<BitstampNodeResponse<string>>
-    cancelBankWithdrawal(id: number|bigint): Promise<BitstampNodeResponse<string>>
+    openBankWithdrawal(body: IBitstampBankWithdrawal): Promise<BitstampNodeResponse<number>>
+    bankWithdrawalStatus(id: number): Promise<BitstampNodeResponse<string>>
+    cancelBankWithdrawal(id: number): Promise<BitstampNodeResponse<string>>
 
     newLiquidationAddress(liquidation_currency): Promise<BitstampNodeResponse<string>>
     liquidationAddressInfo(address): Promise<BitstampNodeResponse<IBitstampLiquidationAddressInfo>>
