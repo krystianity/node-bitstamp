@@ -41,17 +41,17 @@ declare module 'node-bitstamp' {
 
   export interface IBitstampOrder {
     id: number
-    datetime: Date
+    datetime: string
     type: BitstampTradeType
-    price: number
-    amount: number
+    price: string
+    amount: string
   }
 
   export interface IBitstampCancelledOrder {
     id: number
     datetime: Date
-    price: number
-    amount: number
+    price: string
+    amount: string
   }
 
   export interface IBitstampTransaction {
@@ -59,7 +59,7 @@ declare module 'node-bitstamp' {
     price: string
     datetime: Date
     btc: string
-    tid: number
+    tid: string
     type: BitstampTradeType
     eur: string
   }
@@ -132,7 +132,7 @@ declare module 'node-bitstamp' {
   }
 
   export interface IBitstampLiquidationTransaction {
-    order_id: number,
+    order_id: number|string, // TODO: Check whether this is a number or a string
     count: number,
     trades: Array<IBitstampLiquidationTrade>
   }
