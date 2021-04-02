@@ -38,6 +38,8 @@ const run = async () => {
     /* PUBLIC */
     await bitstamp.ticker(CURRENCY.ETH_BTC).then(({status, headers, body}) => console.log(body));
     await bitstamp.tickerHour(CURRENCY.ETH_BTC).then(({status, headers, body}) => console.log(body));
+    await bitstamp.ohlcData(CURRENCY.ETH_BTC).then(({status, headers, body}) => console.log(body));
+
     await bitstamp.orderBook(CURRENCY.ETH_BTC).then(({status, headers, body}) => console.log(body));
     await bitstamp.transactions(CURRENCY.ETH_BTC, "hour").then(({status, headers, body}) => console.log(body));
     await bitstamp.conversionRate().then(({status, headers, body}) => console.log(body));
