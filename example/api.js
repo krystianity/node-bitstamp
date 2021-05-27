@@ -44,6 +44,7 @@ const run = async () => {
 
     /* PRIVATE */
     const balance = await bitstamp.balance().then(({body:data}) => data);
+    const cryptoTransactions = await bitstamp.cryptoTransactions().then(({body:data}) => data);
 
     /*
         await bitstamp.userTransaction(CURRENCY.ETH_BTC, {offset, limit, sort});
