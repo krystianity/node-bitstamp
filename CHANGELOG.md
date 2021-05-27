@@ -4,6 +4,7 @@
 
 - updated dependencies
 - added CryptoTransactions
+- added OHLC Data 
 
 # 3.0.0
 
