@@ -1,5 +1,10 @@
 # NODE-BITSTAMP CHANGELOG
 
+# 3.1.0
+
+- updated dependencies
+- added CryptoTransactions
+
 # 3.0.0
 
 * support for new websockets
