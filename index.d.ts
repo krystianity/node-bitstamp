@@ -46,6 +46,14 @@ declare module 'node-bitstamp' {
     constructor(options: IBitstampOptions)
 
     ticker(currency?: CURRENCY): Promise<any>
+    ohlcData(
+      currency?: CURRENCY,
+      start?: number,
+      end?: number,
+      step?: number,
+      limit?: number
+    ): Promise<any>
+
     orderBook(currency?: CURRENCY): Promise<{ status: number; headers: {}; body: IBitstampOrderbook }>
 
     balance(): Promise<BalanceResponseInvalid | any>
